@@ -15,17 +15,28 @@ std::string convToLower(std::string src)
     to a set of words based on the criteria given in the assignment **/
 std::set<std::string> parseStringToWords(string rawWords)
 {
+    string final = convToLower(rawWords);
+    //if there is only one word inside, just return the word 
+    if(final.size() <= 1){
+        return final;
+    }
+    //if it is the other case, then split at punctuation 
+    else{
+        std::set<std::string> newset;
+        string s;
+        for(int i = 0; i < (int)final.size(); i++){
+            if( 97 <= (int)final[i] && (int)final[i] <= 122){
+                s += final[i];
+            }
+            else{
+              if(s.size() >= 2){
+                newset.insert(s);
+              }
+              s = "";
+            }
+        }
+    }
 
-
-
-
-
-
-
-
-
-
-}
 
 /**************************************************
  * COMPLETED - You may use the following functions

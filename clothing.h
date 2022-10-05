@@ -15,12 +15,10 @@ public:
     virtual std::set<std::string> keywords() const;
     virtual std::string displayString() const;
     virtual void dump(std::ostream& os) const;
-    
 protected: 
   //in private, I want all the functions to be here because they
   //can't be modified
     std::string brand_;
     std::string size_;
-
 };
 #endif

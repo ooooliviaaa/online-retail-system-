@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Book::Book(const std::string category, const std::string name, double price, int qty, std::string ISBN, std::string author) :
+Book::Book(const std::string category, const std::string name, double price, int qty, std::string author, std::string ISBN) :
   Product(category, name, price, qty){
     ISBN_ = ISBN;
     author_ = author;
@@ -40,7 +40,7 @@ std::string Book::displayString() const{
   string q = sd.str();
 
   // price has to be two decimals 
-  contains=name_+"/n"+"Author: "+author_+" "+ "ISBN: "+" "+ISBN_+"/n"+p+" "+q+ " left.";
+  contains=name_+"\n"+"Author: "+author_+" "+"ISBN: "+" "+ISBN_+"\n"+p+" "+q+ " left.";
   return contains;
 }
 
@@ -48,6 +48,7 @@ void Book::dump(std::ostream& os) const{
   //calls products and dumps the general stuff for products 
   Product::dump(os);
   //dump the additional stuff for books
+  //changed order for author and isbn 
   os << ISBN_ << "\n" << author_ << endl;
 }
 

@@ -12,7 +12,7 @@ class Book : public Product
 {
 public:
   //in public, I want all the variables to be here 
-    Book(const std::string category, const std::string name, double price, int qty,  std::string ISBN, std::string author);
+    Book(const std::string category, const std::string name, double price, int qty, std::string author, std::string ISBN);
     virtual std::set<std::string> keywords() const;
     virtual std::string displayString() const;
     virtual void dump(std::ostream& os) const;

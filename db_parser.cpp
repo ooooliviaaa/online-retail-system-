@@ -17,13 +17,13 @@ DBParser::DBParser()
 {
     lineno_ = 1;
     error_ = false;
-
 }
+
 DBParser::~DBParser()
 {
     for(map<string, SectionParser*>::iterator it = parsers_.begin();
             it != parsers_.end();
-            ++it) {
+            ++it){
         delete it->second;
     }
 }

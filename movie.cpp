@@ -38,7 +38,7 @@ std::string Movie::displayString() const{
   sd << qty_;
   string q = sd.str();
   // price has to be two decimals 
-  contains=name_+"/n"+"Genre: "+genre_+" "+ "Rating: "+" "+rating_+"/n"+p+" "+q+ " left.";
+  contains=name_+"\n"+"Genre: "+genre_+" "+ "Rating: "+" "+rating_+"\n"+p+" "+q+ " left.";
   return contains;
 }
 

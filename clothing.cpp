@@ -21,7 +21,6 @@ std::set<std::string> Clothing::keywords() const{
   std::set<std::string> keywrds1 = parseStringToWords(brand_);
   std::set<std::string> keywrds2 = parseStringToWords(Product::getName());
   //create two different sets to store author and name 
-
   keywrds1.insert(keywrds2.begin(),keywrds2.end());
   //now insert the ISBN as well
   keywrds1.insert(convToLower(size_));
@@ -40,11 +39,11 @@ std::string Clothing::displayString() const{
   std::stringstream sd;
   sd << qty_;
   string q = sd.str();
-
   // price has to be two decimals 
-  contains=name_+"/n"+"Size: "+size_+" "+ "Brand: "+" "+brand_+"/n"+p+" "+q+ " left.";
+  contains=name_+"\n"+"Size: "+size_+" "+ "Brand: "+brand_+"\n"+p+" "+q+ " left.";
   return contains;
 }
+
 void Clothing::dump(std::ostream& os) const{
   //calls products and dumps the general stuff for products 
   Product::dump(os);

@@ -48,8 +48,8 @@ void Clothing::dump(std::ostream& os) const{
   //calls products and dumps the general stuff for products 
   Product::dump(os);
   //dump the additional stuff for books
-  os << brand_ << endl;
   os << size_ << endl;
+  os << brand_ << endl;
 }
 
 

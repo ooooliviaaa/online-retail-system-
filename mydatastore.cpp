@@ -120,6 +120,7 @@ void MyDataStore::dump(ostream& ofile){
 
 
 // add to cart 
+/*
 void MyDataStore::addtocart(std::string username, Product* p){
   if (p->getQty() == 0) {
     return;
@@ -137,9 +138,28 @@ void MyDataStore::addtocart(std::string username, Product* p){
   else{
     cout << "Invalid username" << endl;
   }
+}*/
+
+//add to cart 
+
+void MyDataStore::addtocart(std::string username, Product* p){
+  if(p->getQty() == 0){
+    return;
+  }
+  if(user.find(username) != user.end()){
+    if(cart.find(username) != cart.end()){
+      cart[username].push_back(p);
+    }
+    else{
+      vector<Product*> newproduct;
+      newproduct.push_back(p);
+      cart.insert(make_pair(username,newproduct));
+    }
+  }
+  else{
+    cout << "Invalid request" << endl;
+  }
 }
-
-
 
 // buy from cart 
 void MyDataStore::buycart(std:: string username){
@@ -148,8 +168,8 @@ void MyDataStore::buycart(std:: string username){
       vector<Product*> newcart;
       vector<Product*> userproduct = cart[username];
       for(unsigned int i = 0; i < userproduct.size(); i++){
-        double finalprice = (userproduct[i])->getPrice() * (userproduct[i])->getQty();
-        if(finalprice <= user[username]->getBalance()){
+        double finalprice = userproduct[i]->getPrice();
+        if(finalprice <= user[username]->getBalance() && userproduct[i]->getQty() > 0){
           user[username]->deductAmount(finalprice);
           (userproduct[i])->subtractQty(1);
         }
@@ -183,9 +203,11 @@ void MyDataStore::viewcart(std::string username){
       vector<Product*> userproduct = cart[username];
       //loop through vector 
       for(unsigned int i = 0; i < userproduct.size(); i++){
+        cout << "Item " << i+1 << endl;
         cout << (userproduct[i])->displayString() << endl;
       }
     }
+    cout << endl;
   }
   else{
     cout << "Invalid username" << endl;
